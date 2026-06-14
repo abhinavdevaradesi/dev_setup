@@ -1,0 +1,30 @@
+# Virtual Environments
+.venv/
+venv/
+env/
+
+# Python
+__pycache__/
+*.py[cod]
+
+# IDE
+.idea/
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Downloaded Installers
+downloads/
+
+# Build Artifacts
+dist/
+build/
+*.egg-info/
+
+# Logs
+*.log
+
+# Environment Variables
+.env

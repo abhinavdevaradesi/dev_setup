@@ -18,6 +18,15 @@ compilers and development environments.
 - Linux Support
 - MacOS Support
 
+
+## Installation
+
+```bash
+git clone https://github.com/TaH00R/dev_setup.git
+cd dev_setup
+python main.py
+```
+
 ## Contributing
 
 Contributions are welcome!

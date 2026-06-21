@@ -9,6 +9,8 @@ import subprocess
 
 import requests
 
+from installers.logger import get_logger
+
 WINGET_DOCS_URL = "https://learn.microsoft.com/windows/package-manager/winget/"
 
 WINGET_MISSING_HINT = (
@@ -74,3 +76,5 @@ def report_failure(action, hint):
     print(f"✗ {action}")
     for line in hint.splitlines():
         print(f"  {line}")
+
+    get_logger().error(f"{action}\n{hint}")

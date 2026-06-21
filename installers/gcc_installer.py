@@ -10,6 +10,7 @@ from installers.errors import (
     describe_network_error,
     report_failure,
 )
+from installers.logger import get_logger
 
 DOWNLOAD_DIR = "downloads"
 
@@ -99,6 +100,8 @@ class GCCInstaller:
             print("[✓] GCC already installed")
             return
 
+        get_logger().info("Installing GCC")
+
         try:
             cls.download()
             cls.extract()
@@ -139,6 +142,8 @@ class GCCInstaller:
                 f"Reason: {error}"
             )
             return
+
+        get_logger().info("GCC installed successfully")
 
         print("\n[!] Open a new terminal after installation.\n")
 

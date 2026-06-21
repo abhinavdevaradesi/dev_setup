@@ -9,6 +9,7 @@ from installers.errors import (
     describe_network_error,
     report_failure,
 )
+from installers.logger import get_logger
 
 DOWNLOAD_DIR = "downloads"
 
@@ -99,6 +100,8 @@ class VSCodeInstaller:
             print("[✓] VS Code already installed")
             return
 
+        get_logger().info("Installing VS Code")
+
         try:
             cls.download()
         except requests.exceptions.RequestException as error:
@@ -131,5 +134,7 @@ class VSCodeInstaller:
             cls.install_extensions()
         except Exception:
             print("[!] Could not install extensions")
+
+        get_logger().info("VS Code installed successfully")
 
         print("[✓] VS Code setup finished")

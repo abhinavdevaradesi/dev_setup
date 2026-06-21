@@ -1,5 +1,7 @@
 import subprocess
 
+from installers.logger import get_logger
+
 
 class JavaInstaller:
 
@@ -27,6 +29,7 @@ class JavaInstaller:
             return
 
         print("Installing Java...")
+        get_logger().info("Installing Java")
 
         try:
             subprocess.run(
@@ -41,6 +44,8 @@ class JavaInstaller:
             )
 
             print("✓ Java installed successfully")
+            get_logger().info("Java installed successfully")
 
         except subprocess.CalledProcessError:
             print("✗ Failed to install Java")
+            get_logger().error("Failed to install Java")

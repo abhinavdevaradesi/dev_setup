@@ -6,6 +6,7 @@ from installers.errors import (
     report_failure,
     winget_available,
 )
+from installers.logger import get_logger
 
 
 def is_git_installed():
@@ -27,6 +28,7 @@ def install_git():
         return
 
     print("Installing Git...")
+    get_logger().info("Installing Git")
 
     if not winget_available():
         report_failure("Failed to install Git", WINGET_MISSING_HINT)
@@ -47,6 +49,7 @@ def install_git():
         )
 
         print("✓ Git installed successfully")
+        get_logger().info("Git installed successfully")
 
     except (subprocess.CalledProcessError, FileNotFoundError, PermissionError) as error:
         report_failure("Failed to install Git", describe_winget_error(error))

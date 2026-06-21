@@ -6,6 +6,7 @@ from installers.errors import (
     report_failure,
     winget_available,
 )
+from installers.logger import get_logger
 
 
 def is_python_installed():
@@ -27,6 +28,7 @@ def install_python():
         return
 
     print("Installing Python...")
+    get_logger().info("Installing Python")
 
     if not winget_available():
         report_failure("Failed to install Python", WINGET_MISSING_HINT)
@@ -47,6 +49,7 @@ def install_python():
         )
 
         print("✓ Python installed successfully")
+        get_logger().info("Python installed successfully")
 
     except (subprocess.CalledProcessError, FileNotFoundError, PermissionError) as error:
         report_failure("Failed to install Python", describe_winget_error(error))

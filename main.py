@@ -3,6 +3,7 @@ from installers.vscode_installer import VSCodeInstaller
 from installers.python_installer import PythonInstaller
 from installers.git_installer import GitInstaller
 from system_info import show_system_info
+from installers.java_installer import JavaInstaller
 
 
 INSTALLERS = {
@@ -10,6 +11,7 @@ INSTALLERS = {
     "2": ("VS Code", VSCodeInstaller.setup),
     "3": ("Python", PythonInstaller.setup),
     "4": ("Git", GitInstaller.setup),
+    "5": ("Java", JavaInstaller.setup)
 }
 
 
@@ -19,8 +21,8 @@ def show_menu():
     for key, (name, _) in INSTALLERS.items():
         print(f"{key}. Install {name}")
 
-    print("5. Install Everything")
-    print("6. System Information")
+    print("6. Install Everything")
+    print("7. System Information")
     print("0. Exit")
 
 
@@ -40,11 +42,11 @@ def main():
             print("\nGoodbye!")
             break
 
-        elif choice == "5":
+        elif choice == "6":
             install_all()
             print("\nSetup Complete!")
 
-        elif choice == "6":
+        elif choice == "7":
             show_system_info()
 
         elif choice in INSTALLERS:

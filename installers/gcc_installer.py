@@ -37,7 +37,7 @@ class GCCInstaller:
     def download():
         os.makedirs(DOWNLOAD_DIR, exist_ok=True)
 
-        print("[+] Downloading GCC...")
+        print("+ Downloading GCC...")
 
         response = requests.get(GCC_URL, stream=True)
         response.raise_for_status()
@@ -46,18 +46,18 @@ class GCCInstaller:
             for chunk in response.iter_content(chunk_size=8192):
                 file.write(chunk)
 
-        print("[✓] Download complete")
+        print("✓ Download complete")
 
     @staticmethod
     def extract():
-        print("[+] Extracting GCC...")
+        print("+ Extracting GCC...")
 
         os.makedirs(INSTALL_DIR, exist_ok=True)
 
         with zipfile.ZipFile(ZIP_NAME, "r") as zip_ref:
             zip_ref.extractall(INSTALL_DIR)
 
-        print("[✓] Extraction complete")
+        print("✓ Extraction complete")
 
     @staticmethod
     def find_bin_folder():
@@ -69,7 +69,7 @@ class GCCInstaller:
 
     @staticmethod
     def add_to_path(path):
-        print("[+] Adding GCC to PATH...")
+        print("+ Adding GCC to PATH...")
 
         subprocess.run(
             f'setx PATH "%PATH%;{path}"',
@@ -77,7 +77,7 @@ class GCCInstaller:
             check=True
         )
 
-        print("[✓] PATH updated")
+        print("✓ PATH updated")
 
     @staticmethod
     def verify():
@@ -97,7 +97,7 @@ class GCCInstaller:
     def setup(cls):
 
         if cls.is_installed():
-            print("[✓] GCC already installed")
+            print("✓ GCC already installed")
             return
 
         get_logger().info("Installing GCC")
@@ -145,6 +145,6 @@ class GCCInstaller:
 
         get_logger().info("GCC installed successfully")
 
-        print("\n[!] Open a new terminal after installation.\n")
+        print("\nOpen a new terminal after installation.\n")
 
-        print("[✓] GCC installation finished")
+        print("✓ GCC installation finished")

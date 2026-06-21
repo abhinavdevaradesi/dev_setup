@@ -31,7 +31,7 @@ class VSCodeInstaller:
     def download():
         os.makedirs(DOWNLOAD_DIR, exist_ok=True)
 
-        print("[+] Downloading VS Code...")
+        print("+ Downloading VS Code...")
 
         response = requests.get(VSCODE_URL, stream=True)
         response.raise_for_status()
@@ -40,11 +40,11 @@ class VSCodeInstaller:
             for chunk in response.iter_content(chunk_size=8192):
                 file.write(chunk)
 
-        print("[✓] Download complete")
+        print("✓ Download complete")
 
     @staticmethod
     def install():
-        print("[+] Installing VS Code...")
+        print("+ Installing VS Code...")
 
         subprocess.run(
             [
@@ -55,7 +55,7 @@ class VSCodeInstaller:
             check=True
         )
 
-        print("[✓] VS Code installed")
+        print("✓ VS Code installed")
 
     @staticmethod
     def install_extensions():
@@ -66,7 +66,7 @@ class VSCodeInstaller:
             "usernamehw.errorlens"
         ]
 
-        print("[+] Installing VS Code extensions...")
+        print("+ Installing VS Code extensions...")
 
         for extension in extensions:
             subprocess.run(
@@ -77,7 +77,7 @@ class VSCodeInstaller:
                 ]
             )
 
-        print("[✓] Extensions installed")
+        print("✓ Extensions installed")
 
     @staticmethod
     def verify():
@@ -97,7 +97,7 @@ class VSCodeInstaller:
     def setup(cls):
 
         if cls.is_installed():
-            print("[✓] VS Code already installed")
+            print("✓ VS Code already installed")
             return
 
         get_logger().info("Installing VS Code")
@@ -133,8 +133,8 @@ class VSCodeInstaller:
         try:
             cls.install_extensions()
         except Exception:
-            print("[!] Could not install extensions")
+            print("! Could not install extensions")
 
         get_logger().info("VS Code installed successfully")
 
-        print("[✓] VS Code setup finished")
+        print("✓ VS Code setup finished")
